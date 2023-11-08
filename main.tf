@@ -15,10 +15,12 @@ resource "digitalocean_droplet" "web-app-exportable" {
 }
 
 #Using data resources with different filters
-#Using variables 
+
 resource "digitalocean_droplet" "web-app-smart" {
+  for_each = data.digitalocean_regions.available-with-features
   image  = var.image
   name   = var.name
   region = var.region
-  size   = data.digitalocean_regions.available-with-features.regions.sizes
+  size   = var.droplet_size
+  vpc_uuid = digitalocean_vpc.acme_vpc.id
 }

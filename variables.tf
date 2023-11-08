@@ -20,3 +20,13 @@ variable "droplet_size" {
   default     = "s-1vcpu-1gb"
   description = "size of the server"
 }
+
+variable "customer-name" {
+  default     = "ACME"
+  description = "Name of the customer"
+}
+
+variable "project-name" {
+  default     = "web-app"
+  description = "Name of the application"
+}
