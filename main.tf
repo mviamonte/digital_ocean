@@ -17,10 +17,10 @@ resource "digitalocean_droplet" "web-app-exportable" {
 #Using data resources with different filters
 
 resource "digitalocean_droplet" "web-app-smart" {
-  for_each = data.digitalocean_regions.available-with-features
+  for_each = data.digitalocean_regions.available-with-features.region.slug
   image    = var.image
   name     = var.name
-  region   = var.region
+  region   = each.value
   size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme_vpc.id
 }
