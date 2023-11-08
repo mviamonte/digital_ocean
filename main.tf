@@ -18,9 +18,9 @@ resource "digitalocean_droplet" "web-app-exportable" {
 
 resource "digitalocean_droplet" "web-app-smart" {
   for_each = data.digitalocean_regions.available-with-features
-  image  = var.image
-  name   = var.name
-  region = var.region
-  size   = var.droplet_size
+  image    = var.image
+  name     = var.name
+  region   = var.region
+  size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme_vpc.id
 }

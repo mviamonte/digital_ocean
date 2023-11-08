@@ -8,8 +8,8 @@ data "digitalocean_regions" "available-with-features" {
     values = ["backups"]
   }
   filter {
-    key = "sizes"
-    values = ["s-1vcpu"]
+    key      = "sizes"
+    values   = ["s-1vcpu"]
     match_by = "substring"
   }
 }

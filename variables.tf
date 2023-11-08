@@ -30,3 +30,8 @@ variable "project-name" {
   default     = "web-app"
   description = "Name of the application"
 }
+
+variable "vpc-cidr" {
+  default     = "10.10.10.0/24"
+  description = "CIDR for the VPC"
+}
