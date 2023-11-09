@@ -17,7 +17,9 @@ variable "region" {
 }
 
 variable "regions" {
-  default = ["nyc1", "nyc2"]
+  type        = list(any)
+  default     = ["nyc1", "nyc2"]
+  description = "Fixed list for regions"
 }
 
 variable "droplet_size" {

@@ -1,3 +1,4 @@
+#For future uses, I should find a way to use this as a source for the regions to be deployed
 data "digitalocean_regions" "available-with-features" {
   filter {
     key    = "available"

@@ -17,17 +17,31 @@ resource "digitalocean_droplet" "web-app-exportable" {
 #Using data resources with different filters
 
 resource "digitalocean_droplet" "web-app-smart" {
-  count    = length(data.digitalocean_regions.available-with-features.regions)
+  count    = length(var.regions)
   image    = var.image
   name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
   region   = var.regions[count.index]
   size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme_vpc.id
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
+  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id , digitalocean_tag.poc.id ]
 }
 
 #Creating the SSH resource for the droplet
 resource "digitalocean_ssh_key" "default" {
   name       = "ssh-key-${var.customer-name}-${var.project-name}"
   public_key = file("/home/miguel/.ssh/github_key.pub")
+}
+
+#Tags for the droplet
+resource "digitalocean_tag" "poc" {
+  name = "POC"
+}
+
+resource "digitalocean_tag" "webserver" {
+  name = "webserver"
+}
+
+resource "digitalocean_tag" "company" {
+  name = "ACME"
 }
