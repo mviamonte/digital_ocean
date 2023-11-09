@@ -14,13 +14,26 @@ resource "digitalocean_droplet" "web-app-exportable" {
   size   = var.droplet_size
 }
 
-#Using data resources with different filters
+#Using fixed list of regions too deploy the droplets
 
 resource "digitalocean_droplet" "web-app-smart" {
   count    = length(var.regions)
   image    = var.image
   name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
   region   = var.regions[count.index]
+  size     = var.droplet_size
+  vpc_uuid = digitalocean_vpc.acme_vpc.id
+  ssh_keys = [digitalocean_ssh_key.default.fingerprint]
+  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id , digitalocean_tag.poc.id ]
+}
+
+#Using dynamic list with specific features for the regions
+
+resource "digitalocean_droplet" "web-app-features" {
+  count    = length(local.dynamic-regions)
+  image    = var.image
+  name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
+  region   = local.dynamic-regions[count.index]
   size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme_vpc.id
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
