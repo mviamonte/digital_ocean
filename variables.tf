@@ -16,6 +16,10 @@ variable "region" {
   description = "NYC Region"
 }
 
+variable "regions" {
+  default = ["nyc1", "nyc2"]
+}
+
 variable "droplet_size" {
   default     = "s-1vcpu-1gb"
   description = "size of the server"
@@ -34,4 +38,9 @@ variable "project-name" {
 variable "vpc-cidr" {
   default     = "10.10.10.0/24"
   description = "CIDR for the VPC"
+}
+
+variable "deployed-by" {
+  default = "mv"
+  type    = string
 }

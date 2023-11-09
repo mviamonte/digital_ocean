@@ -19,9 +19,9 @@ data "digitalocean_regions" "available-with-features" {
   }
 }
 
-output "test" {
-  value = data.digitalocean_regions.available-with-features.regions
-}
+# output "test" {
+#   value = data.digitalocean_regions.available-with-features.regions
+# }
 
 # #Testing the data singular data resource
 # data "digitalocean_region" "sfo2" {

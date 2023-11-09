@@ -17,10 +17,10 @@ resource "digitalocean_droplet" "web-app-exportable" {
 #Using data resources with different filters
 
 resource "digitalocean_droplet" "web-app-smart" {
-  for_each = data.digitalocean_regions.available-with-features.regions
+  count    = length(data.digitalocean_regions.available-with-features.regions)
   image    = var.image
-  name     = var.name
-  #region   = each.value
+  name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
+  region   = var.regions[count.index]
   size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme_vpc.id
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
