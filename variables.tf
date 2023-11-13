@@ -12,7 +12,7 @@ variable "name" {
 }
 
 variable "region" {
-  default     = "nyc2"
+  default     = "nyc1"
   description = "NYC Region"
 }
 
@@ -38,7 +38,7 @@ variable "project-name" {
 }
 
 variable "vpc-cidr" {
-  default     = "10.10.10.0/24"
+  default     = "10.108.16.0/20"
   description = "CIDR for the VPC"
 }
 
