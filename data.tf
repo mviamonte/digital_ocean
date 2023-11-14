@@ -21,3 +21,7 @@ data "digitalocean_regions" "available-with-features" {
   }
 }
 
+data "local_file" "linux-user-data" {
+  filename = "${path.module}/userdata.sh"
+}
+
