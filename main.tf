@@ -17,15 +17,16 @@
 #Using fixed list of regions too deploy the droplets
 
 resource "digitalocean_droplet" "web-app-smart" {
-  count    = length(var.regions)
-  image    = var.image
-  name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
-  region   = var.regions[count.index]
-  size     = var.droplet_size
-  vpc_uuid = digitalocean_vpc.acme-vpc-single-region.id
-  ssh_keys = [digitalocean_ssh_key.default.fingerprint]
+  count         = length(var.regions)
+  user_data     = file("userdata.yml")
+  image         = var.image
+  name          = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
+  region        = var.regions[count.index]
+  size          = var.droplet_size
+  vpc_uuid      = digitalocean_vpc.acme-vpc-single-region.id
+  ssh_keys      = [digitalocean_ssh_key.default.fingerprint]
   droplet_agent = true
-  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id , digitalocean_tag.poc.id ]
+  tags          = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
 }
 
 # # #Using dynamic list with specific features for the regions
