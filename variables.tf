@@ -18,7 +18,7 @@ variable "region" {
 
 variable "regions" {
   type        = list(any)
-  default     = ["nyc1", "nyc2"]
+  default     = ["nyc1", "nyc3"]
   description = "Fixed list for regions"
 }
 
@@ -38,7 +38,7 @@ variable "project-name" {
 }
 
 variable "vpc-cidr" {
-  default     = "10.108.16.0/16"
+  default     = "10.108.16.0/20"
   description = "CIDR for the VPC"
 }
 

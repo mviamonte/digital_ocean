@@ -12,6 +12,10 @@ To apply this infra you must choose the type of `droplet` based on the model. I 
 terraform apply -var-file="input.tfvars" --auto-approve
 ```
 
+## Version 1.1
+Using user data with `cloud-init` format. 
+Still need to verify if the rule for OpenSSH is working to enable automatically the Firewall for the SSH console. 
+
 
 #### Options
 Using `env` variable
