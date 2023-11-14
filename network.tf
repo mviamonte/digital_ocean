@@ -5,8 +5,7 @@
 # }
 
 resource "digitalocean_vpc" "acme-vpc-multi-region" {
-  count = length(local.dynamic-regions)
-  name     = "vpc-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
-  region   = local.dynamic-regions[count.index]
-  ip_range = var.vpc-cidr
+  count  = length(local.dynamic-regions)
+  name   = "vpc-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
+  region = local.dynamic-regions[count.index]
 }

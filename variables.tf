@@ -38,7 +38,7 @@ variable "project-name" {
 }
 
 variable "vpc-cidr" {
-  default     = "10.108.16.0/20"
+  default     = "10.108.16.0/16"
   description = "CIDR for the VPC"
 }
 

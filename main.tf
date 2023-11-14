@@ -37,7 +37,7 @@ resource "digitalocean_droplet" "web-app-features" {
   size     = var.droplet_size
   vpc_uuid = digitalocean_vpc.acme-vpc-multi-region[count.index].id
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
-  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id , digitalocean_tag.poc.id ]
+  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
 }
 
 #Creating the SSH resource for the droplet

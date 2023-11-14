@@ -1,10 +1,15 @@
 ## Testing Digital Ocean for small projects
+## Version 1.0
 ### Provider
 The provider can be authenticated using personal token as a `env` variable or with the use of `tfvars` file and letting `.gitignore` file exclude the same to avoid any secret / API Key leak
 
 In order to allow terraform commands use the file, the following command should be executed
 ```
-terraform plan -var-file="input.tfvars
+terraform plan -var-file="input.tfvars"
+```
+To apply this infra you must choose the type of `droplet` based on the model. I strongly suggest ran this command 
+```
+terraform apply -var-file="input.tfvars" --auto-approve
 ```
 
 
@@ -24,3 +29,6 @@ Using `tf.vars` file
 - Some `outputs` attributes from `data data digitalocean_region` has been included to understand how to use the `filters` on the `data digitalocean_regions` resource. (NEW OUTPUT FOR THE DATA RESOURCES REGIONS HAS BEEN CREATED)
 - Modify the `name` expression for the `droplet` resource using probably tags or other variables to demonstrate an example (DONE)
 - Create the code to create dinamically the tags instead individual blocks for each  `digitalocean_tag` resource. Map variable and `for_each` meta argument. (TO BE DONE)
+
+### Note
+Still some work to do, let's release this first version. 
