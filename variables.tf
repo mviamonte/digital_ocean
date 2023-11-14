@@ -18,7 +18,7 @@ variable "region" {
 
 variable "regions" {
   type        = list(any)
-  default     = ["nyc1", "nyc2"]
+  default     = ["nyc1", "nyc3"]
   description = "Fixed list for regions"
 }
 
