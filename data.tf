@@ -22,6 +22,6 @@ data "digitalocean_regions" "available-with-features" {
 }
 
 data "digitalocean_vpc" "ny-region-vpcs" {
-  count = length(data.digitalocean_regions.available-with-features)
+  count = length(local.dynamic-regions)
   region = local.dynamic-regions[count.index]
 }

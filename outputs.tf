@@ -2,7 +2,8 @@ output "testdynamic-regions" {
   value = local.dynamic-regions
 }
 
-# output "test" {
+# All the regions and features from data source
+# output "all_regions_and_features" {
 #   value = data.digitalocean_regions.available-with-features.regions
 # }
 
