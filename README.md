@@ -42,3 +42,6 @@ The creation of the `dynamic-regions` locals give us a `tuple` with the slug of 
 
 For the `VPC data resource` I'm using the same logic base on the same `local` value. 
 `VPC` resources are created isolated with a single `subnet` in the corresponding folder
+
+## To review
+Droplets are being deployed on the default VPC instead of the custom (REVIEW NEXT TIME)
