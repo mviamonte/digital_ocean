@@ -16,7 +16,7 @@ resource "digitalocean_droplet" "web-app-exportable" {
 
 #Using fixed list of regions too deploy the droplets
 
-resource "digitalocean_droplet" "web-app-smart" {
+resource "digitalocean_droplet" "mz-deploy-static" {
   count         = length(var.regions)
   user_data     = file("userdata.yml")
   image         = var.image
@@ -31,7 +31,7 @@ resource "digitalocean_droplet" "web-app-smart" {
 
 # #Using dynamic list with specific features for the regions
 
-resource "digitalocean_droplet" "web-app-features" {
+resource "digitalocean_droplet" "mz-deploy-dynamic" {
   count         = length(local.dynamic-regions)
   user_data     = file(userdata.yml)
   image         = var.image
