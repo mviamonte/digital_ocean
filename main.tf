@@ -32,14 +32,16 @@ resource "digitalocean_droplet" "web-app-smart" {
 # #Using dynamic list with specific features for the regions
 
 resource "digitalocean_droplet" "web-app-features" {
-  count    = length(local.dynamic-regions)
-  image    = var.image
-  name     = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
-  region   = local.dynamic-regions[count.index]
-  size     = var.droplet_size
-  vpc_uuid = data.digitalocean_vpc.ny-region-vpcs[count.index].id
-  ssh_keys = [digitalocean_ssh_key.default.fingerprint]
-  tags     = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
+  count         = length(local.dynamic-regions)
+  user_data     = file(userdata.yml)
+  image         = var.image
+  name          = "droplet-${var.customer-name}-${var.project-name}-${count.index}-${var.deployed-by}"
+  region        = local.dynamic-regions[count.index]
+  size          = var.droplet_size
+  vpc_uuid      = data.digitalocean_vpc.ny-region-vpcs[count.index].id
+  ssh_keys      = [digitalocean_ssh_key.default.fingerprint]
+  droplet_agent = true
+  tags          = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
 }
 
 #Creating the SSH resource for the droplet
