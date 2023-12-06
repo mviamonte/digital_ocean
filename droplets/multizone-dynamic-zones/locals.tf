@@ -7,10 +7,12 @@ locals {
       for vpc_id in local.vpc-uuid-list : vpc_id
     ]
   }
+
+    mz-multi-deploy-2 = [
+    for az, vpc in local.mz-map : {
+        az = vpc,
+        az = vpc,
+    }
+  ]
   tags = keys(digitalocean_tag.tags-for-project)
-  # mz-map-fixed = {
-  #   for az in local.dynamic-regions :  az => [
-  #       for id_vpc in lenght(local.vpc-uuid-list) : m
-  #   ]
-  #   }
 }

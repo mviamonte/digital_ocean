@@ -13,7 +13,6 @@ resource "digitalocean_droplet" "mz-deploy-dynamic" {
   vpc_uuid      = each.value
 }
 
-
 #Creating the SSH resource for the droplet
 resource "digitalocean_ssh_key" "default" {
   name       = "ssh-key-${var.customer-name}-${var.project-name}"
