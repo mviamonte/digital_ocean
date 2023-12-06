@@ -3,11 +3,11 @@
 ### Provider
 The provider can be authenticated using personal token as a `env` variable or with the use of `tfvars` file and letting `.gitignore` file exclude the same to avoid any secret / API Key leak
 
-In order to allow terraform commands use the file, the following command should be executed
+On each project / folder based on the needs, the way to plan the resources to be deployed is using
 ```
-terraform plan -var-file="input.tfvars"
+terraform plan -var-file="../../input.tfvars"
 ```
-To apply this infra you must choose the type of `droplet` based on the model. I strongly suggest ran this command 
+On each project / folder based on the needs, the way to plan the resources to be deployed is using
 ```
 terraform apply -var-file="../../input.tfvars" --auto-approve
 ```
@@ -20,7 +20,7 @@ Still need to verify if the rule for OpenSSH is working to enable automatically 
 ## Version 2.0
 All the `tags` resources has been refactored
 The projects has been isolated under `droplets` directory
-
+- 
 
 #### Options
 Using `env` variable
@@ -28,6 +28,18 @@ Using `env` variable
 Using `tf.vars` file
 `token = XXXXXX`
 
+### Index of projects
+For deployment of droplets, using different approaches
+Under droplets you will find
+- single-deployment
+- exportable-deployment
+- multizone-static-zones
+- multizone-dynamic-zones
+
+For VPC deployment for the `multizone-dynamic-zones`
+Under networking directory
+- vpc
+- load_balancer (not deployed yet)
 ### Pending / In progress
 - Create `digitalocean_vpc` resources and use attributes on `droplet` resources (DONE)
 - Create `resource`  with a `SSH` public key using [this](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/ssh_key) resource with a generated SSH local key (DONE)
