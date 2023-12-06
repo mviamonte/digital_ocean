@@ -6,16 +6,6 @@ variable "image" {
   description = "String for Ubuntu 20.04"
 }
 
-variable "name" {
-  default     = "webserver"
-  description = "value for web server"
-}
-
-variable "region" {
-  default     = "nyc1"
-  description = "NYC Region"
-}
-
 variable "regions" {
   type        = list(any)
   default     = ["nyc1", "nyc3"]
@@ -37,21 +27,9 @@ variable "project-name" {
   description = "Name of the application"
 }
 
-variable "vpc-cidr" {
-  default     = "10.108.16.0/20"
-  description = "CIDR for the VPC"
-}
-
 variable "deployed-by" {
   default = "mv"
   type    = string
-}
-
-#Hardcoding names for VPC because I don't have yet remote state
-
-variable "vpc-ids" {
-  type    = list(any)
-  default = ["vpc-ACME-mv-nyc1", "vpc-ACME-mv-nyc3"]
 }
 
 variable "tags" {

@@ -20,7 +20,7 @@ data "digitalocean_regions" "available-with-features" {
   }
 }
 
-data "digitalocean_vpc" "ny-region-vpcs" {
-  for_each = toset(var.vpc-ids)
-  name     = each.key
-}
+# data "digitalocean_vpc" "ny-region-vpcs" {
+#   for_each = toset(var.vpc-ids)
+#   name     = each.key
+# }
