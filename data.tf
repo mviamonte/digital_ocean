@@ -1,5 +1,4 @@
-#For future uses, I should find a way to use this as a source for the regions to be deployed
-#Also I should use this for the argument of the meta argument count   = length(data.digitalocean_regions.available-with-features.regions)
+#To validate the values of the output, check the output format after the terraform plan
 data "digitalocean_regions" "available-with-features" {
   filter {
     key    = "available"
@@ -22,6 +21,6 @@ data "digitalocean_regions" "available-with-features" {
 }
 
 data "digitalocean_vpc" "ny-region-vpcs" {
-  count  = length(local.dynamic-regions)
-  region = local.dynamic-regions[count.index]
+  for_each = toset(var.vpc-ids)
+  name     = each.key
 }
