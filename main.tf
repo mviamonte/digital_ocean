@@ -25,7 +25,7 @@ resource "digitalocean_droplet" "mz-deploy-static-list" {
   size          = var.droplet_size
   ssh_keys      = [digitalocean_ssh_key.default.fingerprint]
   droplet_agent = true
-  tags          = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
+  tags          = local.tags
 }
 
 # #Using dynamic list with specific features for the regions
@@ -38,7 +38,7 @@ resource "digitalocean_droplet" "mz-deploy-dynamic" {
   size          = var.droplet_size
   ssh_keys      = [digitalocean_ssh_key.default.fingerprint]
   droplet_agent = true
-  tags          = [digitalocean_tag.company.id, digitalocean_tag.webserver.id, digitalocean_tag.poc.id]
+  tags          = local.tags #This attribute expect a list of string
   region        = each.key
   vpc_uuid      = each.value
 }
@@ -51,14 +51,7 @@ resource "digitalocean_ssh_key" "default" {
 }
 
 #Tags for the droplet
-resource "digitalocean_tag" "poc" {
-  name = "POC"
-}
-
-resource "digitalocean_tag" "webserver" {
-  name = "webserver"
-}
-
-resource "digitalocean_tag" "company" {
-  name = "ACME"
+resource "digitalocean_tag" "tags-for-project" {
+  for_each = toset(var.tags)
+  name = each.key
 }

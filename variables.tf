@@ -53,3 +53,9 @@ variable "vpc-ids" {
   type    = list(any)
   default = ["vpc-ACME-mv-nyc1", "vpc-ACME-mv-nyc3"]
 }
+
+variable "tags" {
+  type = list(any)
+  default = ["POC","webserver","ACME"]
+  
+}
