@@ -1,28 +1,24 @@
-output "testdynamic-regions" {
+output "dynamic-regions" {
   value = local.dynamic-regions
 }
 
-# output "test" {
-#   value = data.digitalocean_regions.available-with-features.regions
-# }
+output "mz-map" {
+  value = local.mz-map
+}
+#This output is only for demostrating for expression purposes
+output "map-multi-deploy" {
+  value = local.mz-multi-deploy
+}
 
-# #Testing the data singular data resource
-# data "digitalocean_region" "sfo2" {
-#   slug = "sfo2"
-# }
+#All the regions and features from data source
+output "all_regions_and_features" {
+  value = data.digitalocean_regions.available-with-features.regions
+}
 
-# output "region_name" {
-#   value = data.digitalocean_region.sfo2.name
-# }
+output "ny-regions-vpc" {
+  value = data.digitalocean_vpc.ny-region-vpcs
+}
 
-# output "region_status" {
-#   value = data.digitalocean_region.sfo2.available
-# }
-
-# output "region_sizes" {
-#   value = data.digitalocean_region.sfo2.sizes
-# }
-
-# output "region_features" {
-#   value = data.digitalocean_region.sfo2.features
-# }
+output "vpc-uuid-list" {
+  value = local.vpc-uuid-list
+}

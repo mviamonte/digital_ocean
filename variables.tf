@@ -46,3 +46,10 @@ variable "deployed-by" {
   default = "mv"
   type    = string
 }
+
+#Hardcoding names for VPC because I don't have yet remote state
+
+variable "vpc-ids" {
+  type    = list(any)
+  default = ["vpc-ACME-mv-nyc1", "vpc-ACME-mv-nyc3"]
+}
