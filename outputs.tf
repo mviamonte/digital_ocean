@@ -22,3 +22,7 @@ output "ny-regions-vpc" {
 output "vpc-uuid-list" {
   value = local.vpc-uuid-list
 }
+
+output "tags" {
+  value = keys(digitalocean_tag.tags-for-project)
+}
