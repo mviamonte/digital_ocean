@@ -13,14 +13,13 @@ terraform apply -var-file="../../input.tfvars" --auto-approve
 ```
 From any directory checking the relative path
 
-## Version 1.1
+## Version 1.1 
 Using user data with `cloud-init` format. 
 Still need to verify if the rule for OpenSSH is working to enable automatically the Firewall for the SSH console. 
 
-## Version 2.0
+## Version 2.0 
 All the `tags` resources has been refactored
 The projects has been isolated under `droplets` directory
-- 
 
 #### Options
 Using `env` variable
