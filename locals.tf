@@ -7,4 +7,5 @@ locals {
       for vpc_id in local.vpc-uuid-list : vpc_id
     ]
   }
+  tags = keys(digitalocean_tag.tags-for-project)
 }
