@@ -8,4 +8,9 @@ locals {
     ]
   }
   tags = keys(digitalocean_tag.tags-for-project)
+  # mz-map-fixed = {
+  #   for az in local.dynamic-regions :  az => [
+  #       for id_vpc in lenght(local.vpc-uuid-list) : m
+  #   ]
+  #   }
 }
