@@ -6,22 +6,6 @@ variable "image" {
   description = "String for Ubuntu 20.04"
 }
 
-variable "name" {
-  default     = "webserver"
-  description = "value for web server"
-}
-
-variable "region" {
-  default     = "nyc1"
-  description = "NYC Region"
-}
-
-variable "regions" {
-  type        = list(any)
-  default     = ["nyc1", "nyc3"]
-  description = "Fixed list for regions"
-}
-
 variable "droplet_size" {
   default     = "s-1vcpu-1gb"
   description = "size of the server"
@@ -37,11 +21,6 @@ variable "project-name" {
   description = "Name of the application"
 }
 
-variable "vpc-cidr" {
-  default     = "10.108.16.0/20"
-  description = "CIDR for the VPC"
-}
-
 variable "deployed-by" {
   default = "mv"
   type    = string
@@ -55,7 +34,7 @@ variable "vpc-ids" {
 }
 
 variable "tags" {
-  type = list(any)
-  default = ["POC","webserver","ACME"]
-  
+  type    = list(any)
+  default = ["POC", "webserver", "ACME"]
+
 }
