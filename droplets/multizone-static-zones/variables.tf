@@ -33,7 +33,7 @@ variable "deployed-by" {
 }
 
 variable "tags" {
-  type = list(any)
-  default = ["POC","webserver","ACME"]
-  
+  type    = list(any)
+  default = ["POC", "webserver", "ACME"]
+
 }

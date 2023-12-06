@@ -1,0 +1,14 @@
+#cloud-config
+#Package configuration
+package_update: true
+package_upgrade: true
+
+packages:
+  - curl
+  - apache2
+
+#Configuring the UFW
+runcmd: 
+  - [ufw, allow,'Apache']
+  - [ufw, allow,'OpenSSH']
+  - [ufw, enable]

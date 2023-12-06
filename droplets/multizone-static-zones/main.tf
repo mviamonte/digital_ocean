@@ -21,5 +21,5 @@ resource "digitalocean_ssh_key" "default" {
 #Tags for the droplet
 resource "digitalocean_tag" "tags-for-project" {
   for_each = toset(var.tags)
-  name = each.key
+  name     = each.key
 }
