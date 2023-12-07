@@ -5,19 +5,6 @@ output "dynamic-regions" {
 output "mz-map" {
   value = local.mz-map
 }
-#This output is only for demostrating for expression purposes
-output "map-multi-deploy" {
-  value = local.mz-multi-deploy
-}
-
-#All the regions and features from data source
-output "all_regions_and_features" {
-  value = data.digitalocean_regions.available-with-features.regions
-}
-
-output "ny-regions-vpc" {
-  value = data.digitalocean_vpc.ny-region-vpcs
-}
 
 output "vpc-uuid-list" {
   value = local.vpc-uuid-list
@@ -25,4 +12,16 @@ output "vpc-uuid-list" {
 
 output "tags" {
   value = keys(digitalocean_tag.tags-for-project)
+}
+
+output "droplet-ipv4" {
+  value = digitalocean_droplet.mz-multiple-droplet-single-region[0].ipv4_address
+}
+
+output "droplet-disk" {
+  value = digitalocean_droplet.mz-multiple-droplet-single-region[0].disk
+}
+
+output "droplet-volume-ids" {
+  value = digitalocean_droplet.mz-multiple-droplet-single-region[0].volume_ids
 }
