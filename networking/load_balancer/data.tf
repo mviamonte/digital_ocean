@@ -25,3 +25,8 @@ data "digitalocean_regions" "available-with-features" {
     match_by = "substring"
   }
 }
+
+data "digitalocean_vpc" "ny-region-vpcs" {
+  for_each = toset(var.vpc-ids)
+  name     = each.key
+}
