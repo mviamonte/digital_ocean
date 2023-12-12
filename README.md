@@ -41,6 +41,67 @@ Under networking directory
 - vpc (common VPC resources for the `droplets` resources)
 - load_balancer (join use with `load-balancer` for a functional deployment)
 
+## Tree of the files
+```
+── droplets
+│   ├── exportable-deployment
+│   │   ├── main.tf
+│   │   ├── provider.tf
+│   │   └── variables.tf
+│   ├── for-load-balancing
+│   │   ├── data.tf
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── provider.tf
+│   │   ├── scripts
+│   │   │   └── userdata.yml
+│   │   ├── terraform.tfstate
+│   │   ├── terraform.tfstate.backup
+│   │   └── variables.tf
+│   ├── multizone-dynamic-zones
+│   │   ├── data.tf
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── provider.tf
+│   │   ├── scripts
+│   │   │   └── userdata.yml
+│   │   └── variables.tf
+│   ├── multizone-static-zones
+│   │   ├── data.tf
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── provider.tf
+│   │   ├── scripts
+│   │   │   └── userdata.yml
+│   │   └── variables.tf
+│   └── single-deployment
+│       ├── main.tf
+│       ├── provider.tf
+│       ├── userdata.yml
+│       └── variables.tf
+├── input.tfvars
+├── networking
+│   ├── load_balancer
+│   │   ├── data.tf
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── provider.tf
+│   │   ├── terraform.tfstate
+│   │   ├── terraform.tfstate.backup
+│   │   └── variables.tf
+│   └── vpc
+│       ├── locals.tf
+│       ├── provider.tf
+│       ├── terraform.tfstate
+│       ├── variables.tf
+│       └── vpc.tf
+└── README.md
+
+```
+
 ### Changelog / activities task
 - Create `digitalocean_vpc` resources and use attributes on `droplet` resources
 - Create `resource`  with a `SSH` public key using [this](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/ssh_key) resource with a generated SSH local key
