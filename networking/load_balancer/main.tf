@@ -6,9 +6,8 @@ resource "digitalocean_loadbalancer" "apache-lb" {
   size     = var.lb-size
   #Using map access interpolation or functions
   forwarding_rule {
-    entry_port     = var.lb-ports.forwarding-rule["http"]
-    entry_protocol = keys(var.lb-ports.forwarding-rule)[0]
-
+    entry_port      = var.lb-ports.forwarding-rule["http"]
+    entry_protocol  = keys(var.lb-ports.forwarding-rule)[0]
     target_port     = var.lb-ports.forwarding-rule["http"]
     target_protocol = keys(var.lb-ports.forwarding-rule)[0]
   }
