@@ -73,7 +73,7 @@ Under networking directory
 ### Load balancer
 After the deployment of the `load balancer` some of the droplets weren't on healthy status, however the independent `droplet` was in OK status. I haven't investigate it further
 ### Droplet selection (Load Balancer project)
-In order to select some of the deployed droplet (`roplet_ids` argument), I have used the `data "digitalocean_droplets"` resource using the `webserver` key filter tag. This should be improved, creating an specific tag for this purpose. There is also a way to pass the tags (argument) directly to the `resource "digitalocean_loadbalancer" ` resource
+In order to select some of the deployed droplet (`droplet_ids` argument), I have used the `data "digitalocean_droplets"` resource using the `webserver` key filter tag. This should be improved, creating an specific tag for this purpose. There is also a way to pass the tags (argument) directly to the `resource "digitalocean_loadbalancer" ` resource. [Check here](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/loadbalancer)
 
 ### Remote state
 This project doesn't use the resource of the remote state, which will improve the use of the data resources. However, this was for only illustrative purposes. 
